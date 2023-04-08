@@ -1,3 +1,3 @@
 <template>
-	<!-- TODO Make overlay sidebar for nav -->
+  <!-- TODO Make overlay sidebar for nav -->
 </template>

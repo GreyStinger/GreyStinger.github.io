@@ -35,7 +35,7 @@ export default {
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
-    '@nuxtjs/svg'
+    "@nuxtjs/svg"
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -64,6 +64,6 @@ export default {
   },
 
   server: {
-    host: '0.0.0.0'
+    host: "0.0.0.0"
   }
 }

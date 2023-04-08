@@ -10,10 +10,10 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'black': '#000000',
-      'white': '#ffffff',
-      'grey': '#26292b',
-      'grey-dark': '#141616'
+      black: "#000000",
+      white: "#ffffff",
+      grey: "#26292b",
+      "grey-dark": "#141616"
     },
     extend: {}
   },

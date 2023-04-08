@@ -1,7 +1,9 @@
 <template>
   <div class="p-4 h32 w-full text-white bg-grey-dark flex">
     <div class="grid">
-      <h1 class="place-self-center text-xl font-bold">Greys Home</h1>
+      <h1 class="place-self-center text-xl font-bold">
+        Greys Home
+      </h1>
     </div>
     <div class="m-auto" />
     <div id="profileMenu" class="relative">
@@ -13,12 +15,12 @@
         >
           Your browser does not support svg
         </object>
-        <div @click="toggleDropdown" class="absolute inset-0 z-10"></div>
+        <div class="absolute inset-0 z-10" @click="toggleDropdown" />
       </div>
       <!-- Dropdown view -->
       <div
-        id="dropdown"
         v-show="isDropdownOpen"
+        id="dropdown"
         class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white text-black"
       >
         <div>
@@ -26,32 +28,57 @@
             v-if="loggedIn"
             href="#"
             class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-            >Account settings</nuxt-link
           >
+            Account settings
+          </nuxt-link>
           <nuxt-link
             v-if="loggedIn"
             to="#"
             class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-            >Logout</nuxt-link
           >
+            Logout
+          </nuxt-link>
           <nuxt-link
             v-if="!loggedIn"
             to="/login"
             class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-            >Login</nuxt-link
           >
+            Login
+          </nuxt-link>
           <nuxt-link
             v-if="!loggedIn"
             to="/register"
             class="block m-0 w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-            >Register</nuxt-link
           >
+            Register
+          </nuxt-link>
         </div>
       </div>
     </div>
     <slot />
   </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      isDropdownOpen: false
+    }
+  },
+  computed: {
+    loggedIn () {
+      // TODO: Implement a proper check for user authentication status
+      return false
+    }
+  },
+  methods: {
+    toggleDropdown () {
+      this.isDropdownOpen = !this.isDropdownOpen
+    }
+  }
+}
+</script>
 
 <style>
 .object-color-filter {
@@ -84,24 +111,3 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      isDropdownOpen: false,
-    };
-  },
-  computed: {
-    loggedIn() {
-      // TODO: Implement a proper check for user authentication status
-      return false;
-    },
-  },
-  methods: {
-    toggleDropdown() {
-      this.isDropdownOpen = !this.isDropdownOpen;
-    },
-  },
-};
-</script>
