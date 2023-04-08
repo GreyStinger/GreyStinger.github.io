@@ -34,7 +34,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
-    "@nuxtjs/pwa"
+    "@nuxtjs/pwa",
+    '@nuxtjs/svg'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -51,12 +52,18 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
-
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {}
+  build: {
+    postcss: {
+      postcssOptions: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {}
+        }
+      }
     }
+  },
+
+  server: {
+    host: '0.0.0.0'
   }
 }
