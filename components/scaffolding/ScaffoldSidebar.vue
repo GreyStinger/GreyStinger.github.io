@@ -14,20 +14,29 @@
         <ul>
           <li>
             <nuxt-link
-              to="#"
+              to="/"
               class="flex items-center px-3 py-3 hover:bg-gray-200"
             >
-              <AccountIcon />
-              <span class="ml-2">Account</span>
+              <HomeIcon />
+              <span class="ml-2">Home</span>
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link
+              to="/"
+              class="flex items-center px-3 py-3 hover:bg-gray-200"
+            >
+              <ShareIcon />
+              <span class="ml-2">Share</span>
             </nuxt-link>
           </li>
           <li class="">
             <nuxt-link
-              to="#"
+              to="/about"
               class="flex items-center px-3 py-3 hover:bg-gray-200"
             >
-              <SettingsIcon />
-              <span class="ml-2">Settings</span>
+              <AccountIcon />
+              <span class="ml-2">About Me</span>
             </nuxt-link>
           </li>
           <li>
@@ -35,8 +44,17 @@
               to="#"
               class="flex items-center px-3 py-3 hover:bg-gray-200"
             >
-              <LogoutIcon />
-              <span class="ml-2">Logout</span>
+              <LinkIcon />
+              <span class="ml-2">Links</span>
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link
+              to="#"
+              class="flex items-center px-3 py-3 hover:bg-gray-200"
+            >
+              <MailIcon />
+              <span class="ml-2">Contact Me</span>
             </nuxt-link>
           </li>
         </ul>
@@ -47,28 +65,30 @@
 </template>
 
 <script>
+import HomeIcon from "@/components/svg/HomeIcon.vue";
+import ShareIcon from "@/components/svg/ShareIcon.vue";
 import AccountIcon from "@/components/svg/AccountIcon.vue";
-import LogoutIcon from "@/components/svg/LogoutIcon.vue";
-import SettingsIcon from "@/components/svg/SettingsIcon.vue";
+import LinkIcon from "@/components/svg/LinkIcon.vue";
+import MailIcon from "@/components/svg/MailIcon.vue";
 
 export default {
-  components: { LogoutIcon, SettingsIcon, AccountIcon },
-  data () {
+  components: { LinkIcon, ShareIcon, AccountIcon, HomeIcon, MailIcon },
+  data() {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: false,
     };
   },
   methods: {
-    toggleSidebar () {
+    toggleSidebar() {
       this.isSidebarOpen = !this.isSidebarOpen;
     },
-    closeSidebar (event) {
+    closeSidebar(event) {
       const sidebar = document.getElementById("navSidebar");
       if (sidebar && !sidebar.contains(event.target)) {
         this.isSidebarOpen = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

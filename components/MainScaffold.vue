@@ -1,66 +1,70 @@
 <template>
-  <div class="p-4 h32 w-full text-white bg-grey-dark flex">
-    <div class="grid">
-      <h1
-        id="homeTitle"
-        class="clickable place-self-center text-xl font-bold"
-        @click="toggleSidebar"
-      >
-        <span> > </span> Greys Home
-      </h1>
-    </div>
-    <div class="m-auto" />
-    <div id="profileMenu" class="relative">
-      <div class="p-2 aspect-square rounded-full bg-grey">
-        <object
-          data="/svg/profile.svg"
-          type="image/svg+xml"
-          class="h-6 w-6 object-color-filter"
-        >
-          Your browser does not support svg
-        </object>
-        <div class="absolute inset-0 z-10" @click="toggleDropdown" />
-      </div>
-      <!-- Dropdown view -->
-      <div
-        v-show="isDropdownOpen"
-        id="dropdown"
-        class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white text-black"
-      >
-        <div class="py-2">
-          <nuxt-link
-            v-if="loggedIn"
-            to="#"
-            class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+  <div>
+    <div class="h-[4rem] w-full text-white bg-grey-dark">
+      <div class="m-auto py-3 align-middle max-w-screen-2xl flex justify-between">
+        <div class="grid">
+          <h1
+            id="homeTitle"
+            class="px-4 clickable place-self-center text-xl font-bold"
+            @click="toggleSidebar"
           >
-            Account settings
-          </nuxt-link>
-          <nuxt-link
-            v-if="loggedIn"
-            to="#"
-            class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+            <span> > </span> Greys Home
+          </h1>
+        </div>
+        <div class="m-auto" />
+        <div id="profileMenu" class="relative">
+          <div class="p-2 aspect-square rounded-full bg-grey">
+            <object
+              data="/svg/profile.svg"
+              type="image/svg+xml"
+              class="h-6 w-6 object-color-filter"
+            >
+              Your browser does not support svg
+            </object>
+            <div class="absolute inset-0 z-10" @click="toggleDropdown" />
+          </div>
+          <!-- Dropdown view -->
+          <div
+            v-show="isDropdownOpen"
+            id="dropdown"
+            class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white text-black"
           >
-            Logout
-          </nuxt-link>
-          <nuxt-link
-            v-if="!loggedIn"
-            to="/login"
-            class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-          >
-            Login
-          </nuxt-link>
-          <nuxt-link
-            v-if="!loggedIn"
-            to="/register"
-            class="block m-0 w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
-          >
-            Register
-          </nuxt-link>
+            <div class="py-2">
+              <nuxt-link
+                v-if="loggedIn"
+                to="#"
+                class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+              >
+                Account settings
+              </nuxt-link>
+              <nuxt-link
+                v-if="loggedIn"
+                to="#"
+                class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+              >
+                Logout
+              </nuxt-link>
+              <nuxt-link
+                v-if="!loggedIn"
+                to="/login"
+                class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+              >
+                Login
+              </nuxt-link>
+              <nuxt-link
+                v-if="!loggedIn"
+                to="/register"
+                class="block m-0 w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+              >
+                Register
+              </nuxt-link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <ScaffoldSidebar ref="sidebar" />
-    <div><slot /></div>
+    <slot />
   </div>
 </template>
 
