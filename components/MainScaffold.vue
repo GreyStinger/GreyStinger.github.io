@@ -1,8 +1,8 @@
 <template>
   <div class="p-4 h32 w-full text-white bg-grey-dark flex">
     <div class="grid">
-      <h1 class="place-self-center text-xl font-bold">
-        Greys Home
+      <h1 id="homeTitle" class="clickable place-self-center text-xl font-bold" @click="toggleSidebar">
+        <span> > </span> Greys Home
       </h1>
     </div>
     <div class="m-auto" />
@@ -56,11 +56,15 @@
       </div>
     </div>
     <slot />
+    <ScaffoldSidebar ref="sidebar" />
   </div>
 </template>
 
 <script>
+import ScaffoldSidebar from "./ScaffoldSidebar.vue";
+
 export default {
+  components: { ScaffoldSidebar },
   data () {
     return {
       isDropdownOpen: false
@@ -74,9 +78,11 @@ export default {
   },
   mounted () {
     document.addEventListener("click", this.closeDropdown);
+    document.addEventListener("click", this.scaffoldCloseSidebar);
   },
   beforeDestroy () {
     document.removeEventListener("click", this.closeDropdown);
+    document.removeEventListener("click", this.scaffoldCloseSidebar);
   },
   methods: {
     toggleDropdown () {
@@ -89,12 +95,24 @@ export default {
         dropdown.style.display = "none";
         this.isDropdownOpen = false;
       }
+    },
+    toggleSidebar () {
+      this.$refs.sidebar.toggleSidebar();
+    },
+    scaffoldCloseSidebar (event) {
+      const title = document.getElementById("homeTitle");
+      if (title.contains(event.target)) { return; }
+      this.$refs.sidebar.closeSidebar(event);
     }
   }
 };
 </script>
 
 <style>
+.clickable {
+  cursor: pointer;
+}
+
 .object-color-filter {
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(174deg)
     brightness(109%) contrast(102%);
