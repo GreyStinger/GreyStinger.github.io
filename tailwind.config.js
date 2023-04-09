@@ -12,7 +12,9 @@ module.exports = {
     colors: {
       black: "#000000",
       white: "#ffffff",
-      grey: "#26292b",
+      grey: "#7C7A7A",
+      snow: "#FDF7FA",
+      sienna: "#8F250C",
       "grey-medium": "#1d1f21",
       "grey-dark": "#141616"
     },

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="h-[4rem] w-full text-white bg-grey-dark">
+  <div class="h-screen">
+    <div class="h-[4rem] w-full text-white bg-grey-dark mb-2">
       <div
         class="m-auto py-3 align-middle max-w-screen-2xl flex justify-between"
       >
@@ -8,7 +8,7 @@
         <div class="px-0 mx-2 rounded-lg grid hover:bg-grey-medium">
           <h1
             id="homeTitle"
-            class="mx-4 clickable place-self-center font-semibold text-2xl flex flex-nowrap"
+            class="ml-4 clickable place-self-center font-semibold text-2xl flex flex-nowrap"
             @click="toggleSidebar"
           >
             <span class="mr-2"><SkewBurgerIcon class="h-full bottom-0" /></span>
@@ -18,12 +18,12 @@
         <!-- Beginning Nav Spacing -->
         <div class="m-auto" />
         <!-- Profile Menu Icon -->
-        <div id="profileMenu" class="mx-2 clickable relative hover-glow">
+        <div id="profileMenu" class="mr-4 clickable relative hover-glow">
           <div class="p-2 aspect-square rounded-full bg-grey hover-glow">
             <object
               data="/svg/profile.svg"
               type="image/svg+xml"
-              class="h-6 w-6 object-color-filter"
+              class="h-6 w-6 white-color-filter"
             >
               Your browser does not support svg
             </object>
@@ -70,7 +70,7 @@
       </div>
     </div>
     <ScaffoldSidebar ref="sidebar" />
-    <div class="m-auto max-w-screen-2xl">
+    <div class="m-auto max-w-screen-2xl bg-grey-medium min-h-[90vh] rounded-lg">
       <slot />
     </div>
   </div>
@@ -90,7 +90,7 @@ export default {
   computed: {
     loggedIn() {
       // TODO: Implement a proper check for user authentication status
-      return true;
+      return false;
     },
   },
   mounted() {
@@ -130,11 +130,6 @@ export default {
 <style>
 .clickable {
   cursor: pointer;
-}
-
-.object-color-filter {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(174deg)
-    brightness(109%) contrast(102%);
 }
 
 #dropdown {

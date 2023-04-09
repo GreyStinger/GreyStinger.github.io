@@ -1,6 +1,6 @@
 <template>
   <MainScaffold>
-    <div class="my-2">
+    <div class="my-0">
       <h1 class="px-4 py-2 text-white font-medium text-2xl">
         Whats been happening?
       </h1>

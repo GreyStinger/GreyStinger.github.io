@@ -34,10 +34,15 @@
 }
 
 html {
-  background-color: rgb(34, 36, 37);
+  background-color: #222425;
   font-family: OpenSans;
 }
 
 body {
   margin: 0;
+}
+
+.white-color-filter {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(174deg)
+    brightness(109%) contrast(102%);
 }

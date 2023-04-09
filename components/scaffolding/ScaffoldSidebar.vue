@@ -4,10 +4,10 @@
     <div id="navSidebar">
       <div
         v-show="isSidebarOpen"
-        class="c-sidebar-display absolute top-0 left-0 bg-white text-black border border-right h-full w-48"
+        class="c-sidebar-display absolute top-0 left-0 bg-grey-medium text-white border-black border-r-2 h-full w-48"
       >
         <div class="flex justify-end">
-          <button class="text-2xl mr-3 mt-1" @click="toggleSidebar">
+          <button class="text-3xl mr-3 mt-1" @click="toggleSidebar">
             &times;
           </button>
         </div>
@@ -17,7 +17,7 @@
               to="/"
               class="flex items-center px-3 py-3 hover:bg-gray-200"
             >
-              <HomeIcon />
+              <HomeIcon class="white-color-filter" />
               <span class="ml-2">Home</span>
             </nuxt-link>
           </li>
@@ -26,7 +26,7 @@
               to="/"
               class="flex items-center px-3 py-3 hover:bg-gray-200"
             >
-              <ShareIcon />
+              <ShareIcon class="white-color-filter" />
               <span class="ml-2">Share</span>
             </nuxt-link>
           </li>
@@ -53,7 +53,7 @@
               to="#"
               class="flex items-center px-3 py-3 hover:bg-gray-200"
             >
-              <MailIcon />
+              <MailIcon class="white-color-filter" />
               <span class="ml-2">Contact Me</span>
             </nuxt-link>
           </li>
@@ -73,41 +73,60 @@ import MailIcon from "@/components/svg/MailIcon.vue";
 
 export default {
   components: { LinkIcon, ShareIcon, AccountIcon, HomeIcon, MailIcon },
-  data () {
+  data() {
     return {
-      isSidebarOpen: false
+      isSidebarOpen: false,
     };
   },
   methods: {
-    toggleSidebar () {
+    toggleSidebar() {
       this.isSidebarOpen = !this.isSidebarOpen;
     },
-    closeSidebar (event) {
+    closeSidebar(event) {
       const sidebar = document.getElementById("navSidebar");
       if (sidebar && !sidebar.contains(event.target)) {
         this.isSidebarOpen = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
 .c-sidebar-display {
-  /* Default state */
   visibility: hidden;
   opacity: 0;
-  animation: sidebar-display-animation 300ms linear 300ms both;
-  /* Visible state */
+  animation: sidebar-display-animation-in 300ms linear 300ms both;
 }
+
 .c-sidebar-display.open {
   visibility: visible;
   opacity: 1;
-  animation: sidebar-display-animation 300ms linear 0ms both;
+  animation: sidebar-display-animation-in 300ms linear 0ms both;
   transform: translateX(0);
 }
 
-@keyframes sidebar-display-animation {
+.c-sidebar-display.close {
+  visibility: visible;
+  opacity: 0;
+  animation: sidebar-display-animation-out 300ms linear 0ms both;
+  transform: translateX(-64px);
+}
+
+@keyframes sidebar-display-animation-out {
+  0% {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-64px);
+  }
+}
+
+@keyframes sidebar-display-animation-in {
   0% {
     visibility: visible;
     opacity: 0;
