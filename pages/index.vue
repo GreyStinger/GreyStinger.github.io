@@ -5,6 +5,10 @@
         Whats been happening?
       </h1>
     </div>
+    <noscript>
+      Please enable JavaScript to view this page.. I'll be building a site with
+      no JS sometime I promise..
+    </noscript>
   </MainScaffold>
 </template>
 
@@ -12,6 +16,6 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "IndexPage"
+  name: "IndexPage",
 });
 </script>

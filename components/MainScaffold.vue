@@ -15,13 +15,11 @@
             Greys Home
           </h1>
         </div>
-        <!-- Ending Home Title -->
         <!-- Beginning Nav Spacing -->
         <div class="m-auto" />
-        <!-- Ending Home Spacing -->
-        <!-- Beginning Profile Menu -->
-        <div id="profileMenu" class="relative">
-          <div class="p-2 aspect-square rounded-full bg-grey">
+        <!-- Profile Menu Icon -->
+        <div id="profileMenu" class="mx-2 clickable relative hover-glow">
+          <div class="p-2 aspect-square rounded-full bg-grey hover-glow">
             <object
               data="/svg/profile.svg"
               type="image/svg+xml"
@@ -31,7 +29,7 @@
             </object>
             <div class="absolute inset-0 z-10" @click="toggleDropdown" />
           </div>
-          <!-- Dropdown view -->
+          <!-- Dropdown View -->
           <div
             v-show="isDropdownOpen"
             id="dropdown"
@@ -84,30 +82,30 @@ import SkewBurgerIcon from "@/components/svg/SkewBurgerIcon.vue";
 
 export default {
   components: { ScaffoldSidebar, SkewBurgerIcon },
-  data () {
+  data() {
     return {
-      isDropdownOpen: false
+      isDropdownOpen: false,
     };
   },
   computed: {
-    loggedIn () {
+    loggedIn() {
       // TODO: Implement a proper check for user authentication status
       return true;
-    }
+    },
   },
-  mounted () {
+  mounted() {
     document.addEventListener("click", this.closeDropdown);
     document.addEventListener("click", this.scaffoldCloseSidebar);
   },
-  beforeDestroy () {
+  beforeDestroy() {
     document.removeEventListener("click", this.closeDropdown);
     document.removeEventListener("click", this.scaffoldCloseSidebar);
   },
   methods: {
-    toggleDropdown () {
+    toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
-    closeDropdown (event) {
+    closeDropdown(event) {
       const dropdown = document.getElementById("dropdown");
       const profileMenu = document.getElementById("profileMenu");
       if (dropdown && profileMenu && !profileMenu.contains(event.target)) {
@@ -115,17 +113,17 @@ export default {
         this.isDropdownOpen = false;
       }
     },
-    toggleSidebar () {
+    toggleSidebar() {
       this.$refs.sidebar.toggleSidebar();
     },
-    scaffoldCloseSidebar (event) {
+    scaffoldCloseSidebar(event) {
       const title = document.getElementById("homeTitle");
       if (title.contains(event.target)) {
         return;
       }
       this.$refs.sidebar.closeSidebar(event);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -163,4 +161,5 @@ export default {
 .hover-bg:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 </style>

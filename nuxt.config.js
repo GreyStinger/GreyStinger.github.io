@@ -1,6 +1,6 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  // ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -9,9 +9,9 @@ export default {
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { hid: "description", name: "description", content: "" },
-      { name: "format-detection", content: "telephone=no" }
+      { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -26,7 +26,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    "@nuxt/typescript-build"
+    "@nuxt/typescript-build",
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -35,35 +35,61 @@ export default {
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
-    "@nuxtjs/svg"
+    "@nuxtjs/svg",
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: "/"
+    baseURL: "/",
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: "en"
-    }
+      lang: "en",
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    html: {
+      minify: {
+        collapseBooleanAttributes: false,
+        decodeEntities: false,
+        minifyCSS: false,
+        minifyJS: false,
+        processConditionalComments: false,
+        removeEmptyAttributes: false,
+        removeRedundantAttributes: false,
+        trimCustomFragments: false,
+        useShortDoctype: false,
+      },
+    },
+
     postcss: {
       postcssOptions: {
         plugins: {
           tailwindcss: {},
-          autoprefixer: {}
-        }
-      }
-    }
+          autoprefixer: {},
+        },
+      },
+    },
+  },
+
+  optimization: {
+    minimize: false,
+  },
+
+  generate: {
+    minify: false,
   },
 
   server: {
-    host: "0.0.0.0"
-  }
+    host: "0.0.0.0",
+  },
+
+  extend(config, ctx) {
+    config.optimization.minimize = false;
+  },
 };
