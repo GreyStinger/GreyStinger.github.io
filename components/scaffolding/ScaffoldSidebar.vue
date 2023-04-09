@@ -47,9 +47,9 @@
 </template>
 
 <script>
-import AccountIcon from "./svg/AccountIcon.vue";
-import LogoutIcon from "./svg/LogoutIcon.vue";
-import SettingsIcon from "./svg/SettingsIcon.vue";
+import AccountIcon from "@/components/svg/AccountIcon.vue";
+import LogoutIcon from "@/components/svg/LogoutIcon.vue";
+import SettingsIcon from "@/components/svg/SettingsIcon.vue";
 
 export default {
   components: { LogoutIcon, SettingsIcon, AccountIcon },

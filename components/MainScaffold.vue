@@ -1,7 +1,11 @@
 <template>
   <div class="p-4 h32 w-full text-white bg-grey-dark flex">
     <div class="grid">
-      <h1 id="homeTitle" class="clickable place-self-center text-xl font-bold" @click="toggleSidebar">
+      <h1
+        id="homeTitle"
+        class="clickable place-self-center text-xl font-bold"
+        @click="toggleSidebar"
+      >
         <span> > </span> Greys Home
       </h1>
     </div>
@@ -55,13 +59,13 @@
         </div>
       </div>
     </div>
-    <slot />
     <ScaffoldSidebar ref="sidebar" />
+    <div><slot /></div>
   </div>
 </template>
 
 <script>
-import ScaffoldSidebar from "./ScaffoldSidebar.vue";
+import ScaffoldSidebar from "@/components/scaffolding/ScaffoldSidebar.vue";
 
 export default {
   components: { ScaffoldSidebar },
@@ -101,7 +105,9 @@ export default {
     },
     scaffoldCloseSidebar (event) {
       const title = document.getElementById("homeTitle");
-      if (title.contains(event.target)) { return; }
+      if (title.contains(event.target)) {
+        return;
+      }
       this.$refs.sidebar.closeSidebar(event);
     }
   }
