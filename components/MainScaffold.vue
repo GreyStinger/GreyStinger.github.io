@@ -1,17 +1,25 @@
 <template>
   <div>
     <div class="h-[4rem] w-full text-white bg-grey-dark">
-      <div class="m-auto py-3 align-middle max-w-screen-2xl flex justify-between">
-        <div class="grid">
+      <div
+        class="m-auto py-3 align-middle max-w-screen-2xl flex justify-between"
+      >
+        <!-- Beginning Home Title -->
+        <div class="px-0 mx-2 rounded-lg grid hover:bg-grey-medium">
           <h1
             id="homeTitle"
-            class="px-4 clickable place-self-center text-xl font-bold"
+            class="mx-4 clickable place-self-center text-2xl flex flex-nowrap"
             @click="toggleSidebar"
           >
-            <span> > </span> Greys Home
+            <span class="mr-2"><SkewBurgerIcon class="h-full bottom-0" /></span>
+            Greys Home
           </h1>
         </div>
+        <!-- Ending Home Title -->
+        <!-- Beginning Nav Spacing -->
         <div class="m-auto" />
+        <!-- Ending Home Spacing -->
+        <!-- Beginning Profile Menu -->
         <div id="profileMenu" class="relative">
           <div class="p-2 aspect-square rounded-full bg-grey">
             <object
@@ -33,7 +41,7 @@
               <nuxt-link
                 v-if="loggedIn"
                 to="#"
-                class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
+                class="m-0 px-4 py-2 text-sm leading-5 flex flex-nowrap align-bottom0 hover-bg hover:text-gray-900 focus:outlininline-block-gray-100 focus:text-gray-900"
               >
                 Account settings
               </nuxt-link>
@@ -64,15 +72,18 @@
       </div>
     </div>
     <ScaffoldSidebar ref="sidebar" />
-    <slot />
+    <div class="m-auto max-w-screen-2xl">
+      <slot />
+    </div>
   </div>
 </template>
 
 <script>
 import ScaffoldSidebar from "@/components/scaffolding/ScaffoldSidebar.vue";
+import SkewBurgerIcon from "@/components/svg/SkewBurgerIcon.vue";
 
 export default {
-  components: { ScaffoldSidebar },
+  components: { ScaffoldSidebar, SkewBurgerIcon },
   data () {
     return {
       isDropdownOpen: false

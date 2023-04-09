@@ -1,7 +1,9 @@
 <template>
   <MainScaffold>
-    <div class="m-auto max-w-screen-2xl">
-      <h1 class="px-4 py-2 text-white font-semibold text-xl">Whats new?</h1>
+    <div class="my-2">
+      <h1 class="px-4 py-2 text-white font-medium text-2xl">
+        Whats been happening?
+      </h1>
     </div>
   </MainScaffold>
 </template>

@@ -73,22 +73,22 @@ import MailIcon from "@/components/svg/MailIcon.vue";
 
 export default {
   components: { LinkIcon, ShareIcon, AccountIcon, HomeIcon, MailIcon },
-  data() {
+  data () {
     return {
-      isSidebarOpen: false,
+      isSidebarOpen: false
     };
   },
   methods: {
-    toggleSidebar() {
+    toggleSidebar () {
       this.isSidebarOpen = !this.isSidebarOpen;
     },
-    closeSidebar(event) {
+    closeSidebar (event) {
       const sidebar = document.getElementById("navSidebar");
       if (sidebar && !sidebar.contains(event.target)) {
         this.isSidebarOpen = false;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
