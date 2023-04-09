@@ -23,10 +23,10 @@
         id="dropdown"
         class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white text-black"
       >
-        <div>
+        <div class="py-2">
           <nuxt-link
             v-if="loggedIn"
-            href="#"
+            to="#"
             class="block m-0 px-4 py-2 text-sm leading-5 text-gray-700 hover-bg hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
           >
             Account settings
@@ -64,20 +64,34 @@ export default {
   data () {
     return {
       isDropdownOpen: false
-    }
+    };
   },
   computed: {
     loggedIn () {
       // TODO: Implement a proper check for user authentication status
-      return false
+      return true;
     }
+  },
+  mounted () {
+    document.addEventListener("click", this.closeDropdown);
+  },
+  beforeDestroy () {
+    document.removeEventListener("click", this.closeDropdown);
   },
   methods: {
     toggleDropdown () {
-      this.isDropdownOpen = !this.isDropdownOpen
+      this.isDropdownOpen = !this.isDropdownOpen;
+    },
+    closeDropdown (event) {
+      const dropdown = document.getElementById("dropdown");
+      const profileMenu = document.getElementById("profileMenu");
+      if (dropdown && profileMenu && !profileMenu.contains(event.target)) {
+        dropdown.style.display = "none";
+        this.isDropdownOpen = false;
+      }
     }
   }
-}
+};
 </script>
 
 <style>
