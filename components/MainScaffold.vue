@@ -8,7 +8,7 @@
         <div class="px-0 mx-2 rounded-lg grid hover:bg-grey-medium">
           <h1
             id="homeTitle"
-            class="mx-4 clickable place-self-center text-2xl flex flex-nowrap"
+            class="mx-4 clickable place-self-center font-semibold text-2xl flex flex-nowrap"
             @click="toggleSidebar"
           >
             <span class="mr-2"><SkewBurgerIcon class="h-full bottom-0" /></span>
