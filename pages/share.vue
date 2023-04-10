@@ -1,23 +1,48 @@
 <template>
   <MainScaffold>
     <div class="text-snow p-4">
-      <h1 class="text-2xl font-semibold">Greys Online File Share:</h1>
-      <br />
+      <h1 class="text-2xl font-semibold">
+        Greys Online File Share:
+      </h1>
+      <br>
       <p>Made with Nuxt and PHP</p>
     </div>
-    <div id="uploadDiv" class="file-upload block mx-4 h-fit text-md max-w-screen-lg">
-      <div class="file-select inline-block w rounded-lg w-[60vw]">
-        <div id="fileName" class="file-select-button">Choose File</div>
-        <div class="file-select-name" v-text="fileName" />
+    <div
+      id="uploadDiv"
+      class="file-upload flex flex-nowrap px-4 text-md select-none"
+    >
+      <div
+        class="file-select flex flex-nowrap min-w-fit rounded-md w-[70vw]"
+        @click="openFileSelect"
+      >
+        <div id="fileName" class="file-select-button">
+          Choose File
+        </div>
+        <div
+          class="file-select-name flex flex-nowrap max-w-[40vw] overflow-hidden whitespace-nowrap"
+          v-text="fileName"
+        />
         <input
           ref="fileInput"
           type="file"
           name="upload-file"
           style="display: none"
           @change="handleFileUpload"
-        />
+        >
       </div>
-      <button class="text-snow ml-2" @click="uploadFile">Upload</button>
+      <div class="m-auto" />
+      <button
+        class="bg-white min-w-[4rem] p-2 border-black rounded-md text-[#34495e] ml-2"
+        @click="uploadFile"
+      >
+        Upload
+      </button>
+    </div>
+    <div class="shadow-2xl m-4">
+      <img
+        class="object-cover h-[69vh] object-bottom rounded-lg w-full"
+        src="@/assets/images/share-bg.jpg"
+      >
     </div>
   </MainScaffold>
 </template>
@@ -27,18 +52,17 @@ import MainScaffold from "~/components/MainScaffold.vue";
 
 export default {
   components: { MainScaffold },
-  data() {
+  data () {
     return {
       fileName: "No file chosen...",
-      file: null,
+      file: null
     };
   },
   methods: {
-    openFileSelect() {
-      // TODO: Fix fileInput click as it stopped working again for some reason.. :/
+    openFileSelect () {
       this.$refs.fileInput.click();
     },
-    handleFileUpload(event) {
+    handleFileUpload (event) {
       const uploadDiv = document.getElementById("uploadDiv");
       const file = event.target.files[0];
       if (!file || /^\s*$/.test(file.name)) {
@@ -49,18 +73,16 @@ export default {
       uploadDiv.classList.add("active");
       this.fileName = file.name;
     },
-    uploadFile() {},
-  },
+    uploadFile () {}
+  }
 };
 </script>
 
 <style>
 .file-upload {
-  /* text-align: center; */
   font-family: Helvetica, Arial, sans-serif;
 }
 .file-upload .file-select {
-  /* display: block; */
   border: 2px solid #dce4ec;
   color: #34495e;
   cursor: pointer;
@@ -78,7 +100,6 @@ export default {
 }
 .file-upload .file-select .file-select-name {
   line-height: 40px;
-  display: inline-block;
   padding: 0 10px;
 }
 .file-upload .file-select:hover {
