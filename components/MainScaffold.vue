@@ -5,7 +5,7 @@
         class="m-auto py-3 align-middle max-w-screen-2xl flex justify-between"
       >
         <!-- Beginning Home Title -->
-        <div class="px-0 mx-2 rounded-lg grid hover:bg-grey-medium">
+        <div class="pr-4 mx-2 rounded-lg grid hover:bg-grey-medium">
           <h1
             id="homeTitle"
             class="ml-4 clickable place-self-center font-semibold text-2xl flex flex-nowrap"
@@ -82,30 +82,30 @@ import SkewBurgerIcon from "@/components/svg/SkewBurgerIcon.vue";
 
 export default {
   components: { ScaffoldSidebar, SkewBurgerIcon },
-  data() {
+  data () {
     return {
-      isDropdownOpen: false,
+      isDropdownOpen: false
     };
   },
   computed: {
-    loggedIn() {
+    loggedIn () {
       // TODO: Implement a proper check for user authentication status
       return false;
-    },
+    }
   },
-  mounted() {
+  mounted () {
     document.addEventListener("click", this.closeDropdown);
     document.addEventListener("click", this.scaffoldCloseSidebar);
   },
-  beforeDestroy() {
+  beforeDestroy () {
     document.removeEventListener("click", this.closeDropdown);
     document.removeEventListener("click", this.scaffoldCloseSidebar);
   },
   methods: {
-    toggleDropdown() {
+    toggleDropdown () {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
-    closeDropdown(event) {
+    closeDropdown (event) {
       const dropdown = document.getElementById("dropdown");
       const profileMenu = document.getElementById("profileMenu");
       if (dropdown && profileMenu && !profileMenu.contains(event.target)) {
@@ -113,17 +113,17 @@ export default {
         this.isDropdownOpen = false;
       }
     },
-    toggleSidebar() {
+    toggleSidebar () {
       this.$refs.sidebar.toggleSidebar();
     },
-    scaffoldCloseSidebar(event) {
+    scaffoldCloseSidebar (event) {
       const title = document.getElementById("homeTitle");
       if (title.contains(event.target)) {
         return;
       }
       this.$refs.sidebar.closeSidebar(event);
-    },
-  },
+    }
+  }
 };
 </script>
 

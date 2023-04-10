@@ -4,7 +4,7 @@
     <div id="navSidebar">
       <div
         v-show="isSidebarOpen"
-        class="c-sidebar-display absolute top-0 left-0 bg-grey-medium text-white border-black border-r-2 h-full w-48"
+        class="c-sidebar-display absolute top-0 left-0 bg-grey-medium text-white border-black border-r-2 h-full w-48 z-[100]"
       >
         <div class="flex justify-end">
           <button class="text-3xl mr-3 mt-1" @click="toggleSidebar">
@@ -23,7 +23,7 @@
           </li>
           <li>
             <nuxt-link
-              to="/"
+              to="/share"
               class="flex items-center px-3 py-3 hover:bg-gray-200"
             >
               <ShareIcon class="white-color-filter" />
@@ -73,22 +73,22 @@ import MailIcon from "@/components/svg/MailIcon.vue";
 
 export default {
   components: { LinkIcon, ShareIcon, AccountIcon, HomeIcon, MailIcon },
-  data() {
+  data () {
     return {
-      isSidebarOpen: false,
+      isSidebarOpen: false
     };
   },
   methods: {
-    toggleSidebar() {
+    toggleSidebar () {
       this.isSidebarOpen = !this.isSidebarOpen;
     },
-    closeSidebar(event) {
+    closeSidebar (event) {
       const sidebar = document.getElementById("navSidebar");
       if (sidebar && !sidebar.contains(event.target)) {
         this.isSidebarOpen = false;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
