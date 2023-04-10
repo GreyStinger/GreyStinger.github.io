@@ -32,7 +32,7 @@
       </div>
       <div class="m-auto" />
       <button
-        class="bg-white min-w-[4rem] p-2 border-black rounded-md text-[#34495e] ml-2"
+        class="bg-white min-w-[4rem] py-2 px-4 border-black rounded-md text-[#34495e] ml-2"
         @click="uploadFile"
       >
         Upload
