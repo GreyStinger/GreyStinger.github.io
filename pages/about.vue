@@ -1,6 +1,6 @@
 <template>
   <MainScaffold>
-    <p>I'm a programmer</p>
+    <p class="text-snow p-4">programmer</p>
   </MainScaffold>
 </template>
 
