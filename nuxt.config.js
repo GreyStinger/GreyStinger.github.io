@@ -1,6 +1,7 @@
 export default {
+  target: "static",
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  // ssr: false,
+  ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -53,20 +54,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    html: {
-      minify: {
-        collapseBooleanAttributes: false,
-        decodeEntities: false,
-        minifyCSS: false,
-        minifyJS: false,
-        processConditionalComments: false,
-        removeEmptyAttributes: false,
-        removeRedundantAttributes: false,
-        trimCustomFragments: false,
-        useShortDoctype: false
-      }
-    },
-
     postcss: {
       postcssOptions: {
         plugins: {
@@ -77,19 +64,7 @@ export default {
     }
   },
 
-  optimization: {
-    minimize: false
-  },
-
-  generate: {
-    minify: false
-  },
-
   server: {
     host: "0.0.0.0"
   },
-
-  extend (config, _) {
-    config.optimization.minimize = false;
-  }
 };

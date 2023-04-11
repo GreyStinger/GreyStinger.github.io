@@ -1,10 +1,8 @@
 <template>
   <MainScaffold>
     <div class="text-snow p-4">
-      <h1 class="text-2xl font-semibold">
-        Greys Online File Share:
-      </h1>
-      <br>
+      <h1 class="text-2xl font-semibold">Greys Online File Share:</h1>
+      <br />
       <p>Made with Nuxt and PHP</p>
     </div>
     <div
@@ -15,9 +13,7 @@
         class="file-select flex flex-nowrap min-w-fit rounded-md w-[70vw]"
         @click="openFileSelect"
       >
-        <div id="fileName" class="file-select-button">
-          Choose File
-        </div>
+        <div id="fileName" class="file-select-button">Choose File</div>
         <div
           class="file-select-name flex flex-nowrap max-w-[40vw] overflow-hidden whitespace-nowrap"
           v-text="fileName"
@@ -28,7 +24,7 @@
           name="upload-file"
           style="display: none"
           @change="handleFileUpload"
-        >
+        />
       </div>
       <div class="m-auto" />
       <button
@@ -42,7 +38,7 @@
       <img
         class="object-cover h-[69vh] object-bottom rounded-lg w-full"
         src="@/assets/images/share-bg.jpg"
-      >
+      />
     </div>
   </MainScaffold>
 </template>
@@ -52,17 +48,17 @@ import MainScaffold from "~/components/MainScaffold.vue";
 
 export default {
   components: { MainScaffold },
-  data () {
+  data() {
     return {
       fileName: "No file chosen...",
-      file: null
+      file: null,
     };
   },
   methods: {
-    openFileSelect () {
+    openFileSelect() {
       this.$refs.fileInput.click();
     },
-    handleFileUpload (event) {
+    handleFileUpload(event) {
       const uploadDiv = document.getElementById("uploadDiv");
       const file = event.target.files[0];
       if (!file || /^\s*$/.test(file.name)) {
@@ -73,8 +69,26 @@ export default {
       uploadDiv.classList.add("active");
       this.fileName = file.name;
     },
-    uploadFile () {}
-  }
+    async uploadFile() {
+      const formData = new FormData();
+      formData.append("file", this.$refs.fileInput.files[0]);
+
+      try {
+        await this.$axios.$post(
+          "http://127.0.0.1:8000/api/upload",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log("File uploaded successfully.");
+      } catch (err) {
+        console.log("Error uploading file:", err);
+      }
+    },
+  },
 };
 </script>
 
