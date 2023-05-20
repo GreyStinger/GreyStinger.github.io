@@ -5,7 +5,7 @@
       Greetings, welcome to my semi-portfolio
     </h1>
     <div class="px-2 py-4 mt-4 mx-4 bg-grey-medium-dark rounded-lg sm:w-3/4 md:w-2/3 lg:w-1/2">
-      <p class="py-1 ml-4 text-snow">
+      <p class="py-1 ml-4 text-lg text-snow">
         Welcome to GreysHome a site I've taken some time out to build.
         <br>
         This has a collection of items that I've thought necessary in my life.
@@ -15,14 +15,9 @@
         Check them out by clicking the top left title.
       </p>
     </div>
-    <div class="my-2">
-      <h1 class="px-4 py-2 text-white font-medium text-2xl">
-        Whats been happening?
-      </h1>
-    </div>
     <div>
-      <h1 class="px-4 py-2 text-white font-medium text-2xl">
-        Check out some of my Projects!
+      <h1 class="px-4 pt-4 pb-1 text-white font-medium text-2xl">
+        Check out some of my other Projects!
       </h1>
       <div class="px-4 py-2 grid gap-2 md:grid-cols-2 sm:w-3/4 md:w-2/3">
         <RepoCard class="py-1" repo="GreyStinger/seam_carver" theme="dark-theme" />
