@@ -15,6 +15,7 @@ module.exports = {
       grey: "#7C7A7A",
       snow: "#FDF7FA",
       sienna: "#8F250C",
+      "grey-medium-dark": "#222425",
       "grey-medium": "#1d1f21",
       "grey-dark": "#141616"
     },
