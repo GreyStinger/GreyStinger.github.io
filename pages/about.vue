@@ -1,6 +1,8 @@
 <template>
   <MainScaffold>
-    <p class="text-snow p-4">programmer</p>
+    <p class="text-snow p-4">
+      programmer
+    </p>
   </MainScaffold>
 </template>
 

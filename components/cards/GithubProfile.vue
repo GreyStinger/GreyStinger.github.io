@@ -1,20 +1,22 @@
 <template>
   <article class="user" :class="{spinner: isLoading}">
-    <dl class="user-data" v-if="!isLoading">
+    <dl v-if="!isLoading" class="user-data">
       <dt>Avatar:</dt>
       <dd class="user-avatar">
-        <img :src="user.avatar_url" alt="avatar" />
+        <img :src="user.avatar_url" alt="avatar">
       </dd>
 
       <dt>Fullname:</dt>
-      <dd class="user-name">{{ user.name }}</dd>
+      <dd class="user-name">
+        {{ user.name }}
+      </dd>
 
       <dt>Account:</dt>
       <a :href="user.html_url" class="user-github-url">
         <dd class="user-account">{{ username }}</dd>
       </a>
     </dl>
-    <dl class="user-stats" v-if="!isLoading">
+    <dl v-if="!isLoading" class="user-stats">
       <dt>Repos</dt>
       <a :href="user.html_url + '?tab=repositories'" class="user-repos-url">
         <dd class="user-repos" data-stats="repos">{{ user.public_repos }}</dd>
@@ -29,29 +31,29 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from "vue";
 
 export default {
-  setup() {
-    const username = 'GreyStinger'  // static username
-    const user = ref(null)
-    const isLoading = ref(true)
+  setup () {
+    const username = "GreyStinger"; // static username
+    const user = ref(null);
+    const isLoading = ref(true);
 
     const getUser = async () => {
       const response = await fetch(`https://api.github.com/users/${username}`, {
         headers: {
-          Authorization: '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',
+          Authorization: "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"
         }
-      })
-      user.value = await response.json()
-      isLoading.value = false
-    }
+      });
+      user.value = await response.json();
+      isLoading.value = false;
+    };
 
-    onMounted(getUser)  // This will fetch new user info on component mount
+    onMounted(getUser); // This will fetch new user info on component mount
 
-    return { user, username, isLoading }
+    return { user, username, isLoading };
   }
-}
+};
 </script>
 
 <style>
@@ -160,4 +162,3 @@ export default {
       text-decoration: none;
   }
 </style>
-
