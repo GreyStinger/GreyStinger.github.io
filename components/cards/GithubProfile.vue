@@ -1,5 +1,5 @@
 <template>
-  <article class="user" :class="{spinner: isLoading}">
+  <article class="user md:w-96" :class="{spinner: isLoading}">
     <dl v-if="!isLoading" class="user-data">
       <dt>Avatar:</dt>
       <dd class="user-avatar">
@@ -56,7 +56,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
   :host {
     display: inline-block;
   }
@@ -64,8 +64,8 @@ export default {
   .user {
     font-family: "Helvetica", Arial, sans-serif;
     display: inline-block;
-    width: 265px;
-    height: 300px;
+    /* width: 265px; */
+    height: 310px;
     overflow: hidden;
     border-radius: 6px;
     position: relative;
