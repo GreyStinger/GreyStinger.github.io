@@ -58,13 +58,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14' # use the Node.js version your project requires
+          node-version: ${{ matrix.node }}
 
       - name: Install Dependencies
-        run: npm ci # use 'npm ci' for a more reproducible build
+        run: yarn install --frozen-lockfile
 
       - name: Generate static site
-        run: npm run generate
+        run: yarn generate
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
